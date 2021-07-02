@@ -15,6 +15,11 @@ class DurationFormatTest {
 
     @Test
     void test_formatDuration_62_1MinuteAnd2Seconds() {
+        assertEquals("now",durationFormat.formatDuration(0));
+    }
+
+    @Test
+    void test_formatDuration_62_1MinuteAnd2Seconds() {
         assertEquals("1 minute and 2 seconds",durationFormat.formatDuration(62));
     }
 
