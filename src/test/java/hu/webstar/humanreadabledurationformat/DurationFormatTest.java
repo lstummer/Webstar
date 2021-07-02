@@ -17,4 +17,9 @@ class DurationFormatTest {
     void test_formatDuration_62_1MinuteAnd2Seconds() {
         assertEquals("1 minute and 2 seconds",durationFormat.formatDuration(62));
     }
+
+    @Test
+    void test_formatDuration_3662_1Hour1MinuteAnd2Seconds() {
+        assertEquals("1 hour, 1 minute and 2 seconds",durationFormat.formatDuration(3662));
+    }
 }
