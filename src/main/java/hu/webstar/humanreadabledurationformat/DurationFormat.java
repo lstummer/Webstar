@@ -14,7 +14,7 @@ public class DurationFormat {
 
         String strResult = "";
         List<Integer> listComponents = new ArrayList<>();
-        int lastIndex;
+        int indexOfLastNonZeroTimeUnit;
         int i;
 
         if (seconds < 0) {
@@ -33,13 +33,16 @@ public class DurationFormat {
         listComponents.add(getMinute());
         listComponents.add(getSecond());
 
-        lastIndex = listComponents.size() - 1;
-        if (listComponents.get(lastIndex) == 0) {
-            lastIndex = listComponents.lastIndexOf(0) - 1;
+// Search the last non zero item of the list of time units.
+        i = listComponents.size() - 1;
+        while (listComponents.get(i) == 0) {
+            i--;
         }
+        indexOfLastNonZeroTimeUnit = i;
 
+// Concatenating non zero items of time units until the item before the last non zero item.
         i = 0;
-        while (i < lastIndex) {
+        while (i < indexOfLastNonZeroTimeUnit) {
             if (listComponents.get(i) > 0) {
                 strResult += listComponents.get(i) + " ";
                 if (listComponents.get(i) > 1) {
@@ -47,7 +50,7 @@ public class DurationFormat {
                 } else {
                     strResult += TIME_COMPONENTS[i];
                 }
-                if (i < lastIndex - 1) {
+                if (i < indexOfLastNonZeroTimeUnit - 1) {
                     strResult += ", ";
                 }
             }

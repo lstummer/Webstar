@@ -81,6 +81,12 @@ class DurationFormatTest {
     }
 
     @Test
+    void test_formatDuration_7200_2Hours() {
+        System.out.println(durationFormat.formatDuration(7200));
+        assertEquals("2 hours",durationFormat.formatDuration(7200));
+    }
+
+    @Test
     void test_formatDuration_3662_1Hour1MinuteAnd2Seconds() {
         System.out.println(durationFormat.formatDuration(3662));
         assertEquals("1 hour, 1 minute and 2 seconds",durationFormat.formatDuration(3662));
@@ -93,8 +99,33 @@ class DurationFormatTest {
     }
 
     @Test
+    void test_formatDuration_172800_2Days() {
+        System.out.println(durationFormat.formatDuration(172800));
+        assertEquals("2 days",durationFormat.formatDuration(172800));
+    }
+
+    @Test
     void test_formatDuration_90061_1Day1Hour1MinuteAnd1Second() {
         System.out.println(durationFormat.formatDuration(90061));
         assertEquals("1 day, 1 hour, 1 minute and 1 second",durationFormat.formatDuration(90061));
     }
+
+    @Test
+    void test_formatDuration_172900_2Days1MinuteAnd40Seconds() {
+        System.out.println(durationFormat.formatDuration(172900));
+        assertEquals("2 days, 1 minute and 40 seconds",durationFormat.formatDuration(172900));
+    }
+
+    @Test
+    void test_formatDuration_31626061_1Year1Day1Hour1MinuteAnd1Second() {
+        System.out.println(durationFormat.formatDuration(31626061));
+        assertEquals("1 year, 1 day, 1 hour, 1 minute and 1 second",durationFormat.formatDuration(31626061));
+    }
+
+    @Test
+    void test_formatDuration_63252122_2Years2Days2Hours2MinutesAnd2Seconds() {
+        System.out.println(durationFormat.formatDuration(63252122));
+        assertEquals("2 years, 2 days, 2 hours, 2 minutes and 2 seconds",durationFormat.formatDuration(63252122));
+    }
+
 }
