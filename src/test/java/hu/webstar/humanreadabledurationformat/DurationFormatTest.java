@@ -75,6 +75,12 @@ class DurationFormatTest {
     }
 
     @Test
+    void test_formatDuration_3600_1Hour() {
+        System.out.println(durationFormat.formatDuration(3600));
+        assertEquals("1 hour",durationFormat.formatDuration(3600));
+    }
+
+    @Test
     void test_formatDuration_3662_1Hour1MinuteAnd2Seconds() {
         System.out.println(durationFormat.formatDuration(3662));
         assertEquals("1 hour, 1 minute and 2 seconds",durationFormat.formatDuration(3662));
