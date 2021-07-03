@@ -56,6 +56,8 @@ public class DurationFormat {
             }
             i++;
         }
+
+// Concatenating the last (non zero) item of time units.
         if (!strResult.isEmpty()) {
             strResult += " and ";
         }
