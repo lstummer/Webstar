@@ -33,7 +33,7 @@ public class DurationFormat {
         listComponents.add(getMinute());
         listComponents.add(getSecond());
 
-        lastIndex=listComponents.size() - 1;
+        lastIndex = listComponents.size() - 1;
         if (listComponents.get(lastIndex) == 0) {
             lastIndex = listComponents.lastIndexOf(0) - 1;
         }
@@ -53,13 +53,14 @@ public class DurationFormat {
             }
             i++;
         }
-        if (i > 1) {
-            strResult += " and " + listComponents.get(i) + " ";
-            if (listComponents.get(i) > 1) {
-                strResult += TIME_COMPONENTS_PLURAL[i];
-            } else {
-                strResult += TIME_COMPONENTS[i];
-            }
+        if (!strResult.isEmpty()) {
+            strResult += " and ";
+        }
+        strResult += listComponents.get(i) + " ";
+        if (listComponents.get(i) > 1) {
+            strResult += TIME_COMPONENTS_PLURAL[i];
+        } else {
+            strResult += TIME_COMPONENTS[i];
         }
 
         return strResult;
