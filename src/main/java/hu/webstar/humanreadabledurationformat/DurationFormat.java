@@ -5,12 +5,12 @@ import java.util.List;
 
 public class DurationFormat {
 
+    private final String[] TIME_UNITS = {"year", "day", "hour", "minute", "second"};
+    private final String[] TIME_UNITS_PLURAL = {"years", "days", "hours", "minutes", "seconds"};
+
     private int seconds;
 
     public String formatDuration(int seconds) {
-
-        final String[] TIME_COMPONENTS = {"year", "day", "hour", "minute", "second"};
-        final String[] TIME_COMPONENTS_PLURAL = {"years", "days", "hours", "minutes", "seconds"};
 
         String strResult = "";
         List<Integer> listComponents = new ArrayList<>();
@@ -44,12 +44,7 @@ public class DurationFormat {
         i = 0;
         while (i < indexOfLastNonZeroTimeUnit) {
             if (listComponents.get(i) > 0) {
-                strResult += listComponents.get(i) + " ";
-                if (listComponents.get(i) > 1) {
-                    strResult += TIME_COMPONENTS_PLURAL[i];
-                } else {
-                    strResult += TIME_COMPONENTS[i];
-                }
+                strResult += listComponents.get(i) + " " + getTimeUnit(listComponents.get(i), i);
                 if (i < indexOfLastNonZeroTimeUnit - 1) {
                     strResult += ", ";
                 }
@@ -61,14 +56,14 @@ public class DurationFormat {
         if (!strResult.isEmpty()) {
             strResult += " and ";
         }
-        strResult += listComponents.get(i) + " ";
-        if (listComponents.get(i) > 1) {
-            strResult += TIME_COMPONENTS_PLURAL[i];
-        } else {
-            strResult += TIME_COMPONENTS[i];
-        }
+        strResult += listComponents.get(i) + " " + getTimeUnit(listComponents.get(i), i);
 
         return strResult;
+    }
+
+    private String getTimeUnit(int componentNumber, int i) {
+
+        return componentNumber > 1 ? TIME_UNITS_PLURAL[i] : TIME_UNITS[i];
     }
 
     public int getYear() {
