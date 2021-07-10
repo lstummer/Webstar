@@ -10,8 +10,10 @@ class DurationFormatTest {
 
     @Test
     void test_formatDuration_negative_illegalArgumentException() {
-//        System.out.println(durationFormat.formatDuration(-1));
-        assertThrows(IllegalArgumentException.class, () -> durationFormat.formatDuration(-1));
+        IllegalArgumentException iae =
+                assertThrows(IllegalArgumentException.class, () -> durationFormat.formatDuration(-1));
+        System.out.println(iae.getMessage());
+        assertEquals("Parameter can't be smaller than zero!", iae.getMessage());
     }
 
     @Test
