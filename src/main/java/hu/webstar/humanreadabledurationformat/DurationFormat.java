@@ -54,6 +54,9 @@ public class DurationFormat {
 
 // Concatenating the last (non zero) item of time units.
         if (!strResult.isEmpty()) {
+            if (", ".equals(strResult.substring(strResult.length() - 2))) {
+                strResult = strResult.substring(0, strResult.length() - 2);
+            }
             strResult += " and ";
         }
         strResult += listComponents.get(i) + " " + getTimeUnit(listComponents.get(i), i);

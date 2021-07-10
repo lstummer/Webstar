@@ -159,5 +159,4 @@ class DurationFormatTest {
         System.out.println(durationFormat.formatDuration(90001));
         assertEquals("1 day, 1 hour and 1 second", durationFormat.formatDuration(90001));
     }
-
 }
